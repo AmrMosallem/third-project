@@ -1,6 +1,4 @@
-import React from 'react'
-import { useState } from 'react'
-import TaskCard from './TaskCard';
+    import { useState } from 'react'
 
 export default function TodoList() {
 
@@ -20,17 +18,7 @@ export default function TodoList() {
         })
 
     }
-    function deleteTask(id) {
-        setTasksList(function (prevTasksList) {
-            const newTasksList = prevTasksList.filter(function (value, index) {
-                return index != id
-            })
-            return newTasksList
-        })
-    }
-    function completeTask(id){
-        
-    }
+
     return (
         <div className='bg-white p-4 rounded-lg shadow-lg'>
             <h1 className='text-xl'>To Do List</h1>
@@ -42,11 +30,12 @@ export default function TodoList() {
             <h1 className='text-xl'>Current Tasks</h1>
             <div className='flex flex-col gap-4'>
                 {tasksList.map(function (taskObj, index) {
-                    return <TaskCard task={taskObj.task}
-                        createdAt={taskObj.createdAt}
-                        handleDeleteTask={function () {
-                            deleteTask(index)
-                        }} />
+                    return <div className='flex gap-4 p-4 border rounded-md items-center shadow-lg'>
+                        <div className='flex flex-col flex-1'>
+                            <p className='text-lg font-bold'>{taskObj.task}</p>
+                            <p className='self-end'>{taskObj.createdAt}</p>
+                        </div>
+                    </div>
                 })}
             </div>
 
